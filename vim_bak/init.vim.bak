@@ -1,0 +1,153 @@
+" ==================== 基本设置 ====================
+"
+
+" 快捷键映射
+imap jk <Esc>
+nmap <space> :
+" 启用语法高亮
+syntax on
+
+" 显示行号
+set number                 " 显示绝对行号
+set relativenumber         " 同时显示相对行号，便于跳转
+
+" 缩进设置
+set autoindent             " 自动缩进
+set smartindent            " 智能缩进
+set tabstop=4              " Tab 显示为 4 个空格
+set shiftwidth=4           " 自动缩进时使用 4 个空格
+set expandtab              " 将 Tab 键转换为空格
+
+" 鼠标和光标设置
+set mouse=a                " 启用鼠标支持
+set cursorline             " 高亮当前行
+" set cursorcolumn         " 高亮当前列（如果需要，可以取消注释）
+
+" 状态栏
+set laststatus=2           " 始终显示状态栏
+
+
+" 搜索设置
+set ignorecase             " 搜索时忽略大小写
+set smartcase              " 搜索时智能区分大小写
+set incsearch              " 增量搜索
+set hlsearch               " 高亮搜索结果
+
+" 括号匹配
+set showmatch              " 高亮匹配的括号
+
+" 其他
+set updatetime=100
+set clipboard=unnamedplus
+set signcolumn=yes
+set noswapfile
+
+" ==================== 插件管理 ====================
+
+" 使用 Vim-Plug 进行插件管理
+call plug#begin('~/.vim/plugged')
+
+" === 常用插件 ===
+Plug 'preservim/nerdtree'         " 文件浏览器
+Plug 'vim-airline/vim-airline'    " 状态栏增强
+Plug 'ryanoasis/vim-devicons'     " 文件图标
+Plug 'b0o/incline.nvim'
+Plug 'akinsho/bufferline.nvim'
+Plug 'romgrk/barbar.nvim'
+
+
+" === 配色方案 ===
+Plug 'morhetz/gruvbox'            " 'gruvbox' 配色方案
+Plug 'w0ng/vim-hybrid'            " 'hybrid' 配色方案
+Plug 'NLKNguyen/papercolor-theme' " PaperColor
+Plug 'theniceboy/nvim-deus'       " 'deus' 配色方案
+Plug 'Shatur/neovim-ayu'          " ayu
+Plug 'sainnhe/everforest'         " everforest
+Plug 'sainnhe/gruvbox-material'   " gruvbox-material
+
+
+" === 语法高亮和代码解析 ===
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Treesitter 增强语法高亮
+Plug 'itchyny/vim-cursorword'   " 光标所在单词高亮
+
+" === 开发辅助插件 ===
+Plug 'scrooloose/nerdcommenter'   " 代码快速注释
+Plug 'tpope/vim-fugitive'         " Git 集成
+Plug 'jiangmiao/auto-pairs'       " 自动补全括号
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  " 代码补全
+Plug 'Yggdroot/indentLine'        " 显示缩进线
+
+" === Snakemake 支持 ===
+Plug 'snakemake/snakemake'        " Snakemake 支持
+Plug 'ibab/vim-snakemake'         " Snakemake 语法高亮
+
+call plug#end()
+
+" ==================== 配色方案和高亮 ====================
+" 启用真彩色支持
+set termguicolors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" 设置配色方案
+colorscheme everforest           " 浅色配色方案： gruvbox-material everforest
+set background=light
+" 使用 autocmd 确保在 VimEnter 事件后应用自定义颜色
+augroup MyColors
+  autocmd!
+  autocmd VimEnter * highlight  Normal guibg=#D5DDE0
+  autocmd VimEnter * highlight CursorLine guibg=#D5E5E6
+  autocmd VimEnter * highlight NormalNC guibg=#D5DDE0
+
+augroup END
+
+" 设置补全窗口背景颜色
+
+" 终端颜色设置
+"let g:terminal_color_0  = '#000000'
+"let g:terminal_color_1  = '#FF5555'
+"let g:terminal_color_2  = '#50FA7B'
+"let g:terminal_color_3  = '#F1FA8C'
+"let g:terminal_color_4  = '#BD93F9'
+"let g:terminal_color_5  = '#FF79C6'
+"let g:terminal_color_6  = '#8BE9FD'
+"let g:terminal_color_7  = '#BFBFBF'
+"let g:terminal_color_8  = '#4D4D4D'
+"let g:terminal_color_9  = '#FF6E67'
+"let g:terminal_color_10 = '#5AF78E'
+"let g:terminal_color_11 = '#F4F99D'
+"let g:terminal_color_12 = '#CAA9FA'
+"let g:terminal_color_13 = '#FF92D0'
+"let g:terminal_color_14 = '#9AEDFE'
+
+" ==================== Coc.nvim 配置 ====================
+
+" Coc.nvim 回车确认补全
+inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" ==================== 快捷键设置 ====================
+
+" 设置 Leader 键
+let mapleader = ";"               " 将 ';' 设置为 Leader 键
+
+" NERDTree 快捷键
+nnoremap <C-n> :NERDTreeToggle<CR>
+inoremap <leader>e <C-o>:call coc#_cancel()<CR>
+
+" NERDCommenter 快捷键（可根据需要配置）
+" 例如，使用 <Leader>c 来切换注释
+nmap <Leader>c <Plug>NERDCommenterToggle
+
+" 其他快捷键映射可以在此添加
+
+" ==================== 其他设置 ====================
+" 启用缓冲区显示
+let bufferline = {}
+let bufferline.animation = v:true                " 启用缓冲区切换动画
+let bufferline.auto_hide = v:false               " 当只有一个缓冲区时不隐藏栏
+let bufferline.closable = v:true                 " 是否显示关闭按钮
+let bufferline.clickable = v:true                " 启用鼠标点击缓冲区
+let bufferline.icons = v:true                    " 显示图标（需要 nvim-web-devicons）
+let bufferline.icon_separator_active = '▎'       " 活动缓冲区分隔符
+let bufferline.icon_separator_inactive = '|'     " 非活动缓冲区分隔符
+let bufferline.maximum_padding = 1               " 缓冲区之间的填充
+let bufferline.insert_at_end = v:true 

@@ -1,0 +1,73 @@
+snippet smk-script "Snakemake rule with script" b
+rule ${1:rule_name}:
+    input:
+        ${2:input_files}
+    output:
+        ${3:output_files}
+    script:
+        "${4:script.py}"
+endsnippet
+
+snippet smk-shell "Snakemake rule with shell" b
+rule ${1:rule_name}:
+    input:
+        ${2:input_files}
+    output:
+        ${3:output_files}
+    shell:
+        """
+        ${4:shell_command}
+        """
+endsnippet
+
+snippet smk-run "Snakemake rule with run" b
+rule ${1:rule_name}:
+    input:
+        ${2:input_files}
+    output:
+        ${3:output_files}
+    run:
+        """
+        ${4:python_code}
+        """
+endsnippet
+
+snippet rule "Snakemake rule" b
+rule ${1:rule_name}:
+    ${2}
+endsnippet
+
+snippet input "Snakemake input" w
+input:
+    ${1:input_files}
+endsnippet
+
+snippet output "Snakemake output" w
+output:
+    ${1:output_files}
+endsnippet
+
+snippet params "Snakemake params" w
+params:
+    ${1:params}
+endsnippet
+
+snippet shell "Snakemake shell command" w
+shell:
+    """
+    ${1:shell_command}
+    """
+endsnippet
+
+snippet script "Snakemake script directive" w
+script:
+    "${1:script.py}"
+endsnippet
+
+snippet run "Snakemake run directive" w
+run:
+    """
+    ${1:python_code}
+    """
+endsnippet
+

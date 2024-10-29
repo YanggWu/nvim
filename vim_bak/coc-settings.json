@@ -1,0 +1,26 @@
+{
+  "languageserver": {
+    "pyright": {
+      "command": "pyright-langserver",
+      "args": ["--stdio"],
+      "filetypes": ["python", "snakemake"],
+      "rootPatterns": ["pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git"]
+    }
+  },
+  "coc.source.snakefiles.enable": true,
+  "snippets.ultisnips.directories": ["UltiSnips"],
+  "python.analysis.exclude": ["*.smk", "Snakefile"],
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportUndefinedVariable": "none",
+    "reportGeneralTypeIssues": "none",
+    "reportMissingImports": "none",
+    "reportUnboundVariable": "none"
+  },
+  "python.analysis.typeCheckingMode": "off",
+  "suggest.autoTrigger": "always",
+  "suggest.minTriggerInputLength": 2,
+  "suggest.maxCompleteItemCount": 7,
+  "diagnostic.displayByAle": true,
+}
+
+
