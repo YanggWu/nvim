@@ -16,8 +16,8 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- ---------- 正常模式 ---------- ---
 -- 空格键映射为 ':'
 keymap.set("n", "<Space>", ":")
-keymap.set("n", "<leader>h", ':bprevious<CR>')
-keymap.set("n", "<leader>l", ':bnext<CR>')
+--keymap.set("n", "<leader>h", ':bprevious<CR>')
+--keymap.set("n", "<leader>l", ':bnext<CR>')
 
 -- 窗口
 keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口 

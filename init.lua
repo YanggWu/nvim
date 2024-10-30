@@ -16,3 +16,8 @@ require("config.cmp")
 require("config.bufferline")
 require("config.autopairs")
 require("config.comment")
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    pattern = "*",
+    command = "source $MYVIMRC"
+})

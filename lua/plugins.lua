@@ -22,7 +22,7 @@ vim.cmd([[
 ]])
 
 return require('packer').startup(function(use)
-  	-- Packer 可以管理自身
+  	-- ========= Packer 可以管理自身 =========== --
 	use 'wbthomason/packer.nvim'
 
 	-- === 常用插件 ===
@@ -42,9 +42,11 @@ return require('packer').startup(function(use)
 	use "nvim-treesitter/nvim-treesitter" 	-- 语法高亮	
 	use "p00f/nvim-ts-rainbow" 				-- 配合treesitter，不同括号颜色区分
 
-	-- === 配色方案 ===
+	-- === 配色方案 === --------
 	use 'sainnhe/everforest'
-	
+	use 'folke/tokyonight.nvim'
+	use 'navarasu/onedark.nvim'	
+	use { "catppuccin/nvim", as = "catppuccin" }
 
 	use {
     "williamboman/mason.nvim",

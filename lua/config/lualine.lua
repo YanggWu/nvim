@@ -1,7 +1,7 @@
 -- ~/.config/nvim/lua/config/lualine.lua
 require("lualine").setup({
   options = {
-    theme = "everforest",
+    theme = "onedark",
     section_separators = "",
     component_separators = "",
   },
